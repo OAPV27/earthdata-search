@@ -235,7 +235,7 @@ describe('Path /search/granules/collection-details', () => {
         url: '**/graphql'
       },
       (req) => {
-        expect(JSON.parse(req.body).data).to.eql(JSON.parse(graphQlGetCollection(conceptId)))
+        expect(req.body.data).to.eql(JSON.parse(graphQlGetCollection(conceptId)))
 
         req.reply({
           body: assocatedDoisGraphQlBody,
@@ -311,6 +311,7 @@ describe('Path /search/granules/collection-details', () => {
         url: '**/api'
       },
       (req) => {
+        console.log('req.body', req.body)
         expect(req.body).to.eq(graphQlGetCollection(conceptId))
 
         req.reply({
